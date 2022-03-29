@@ -3,12 +3,21 @@ import java.awt.*;
 
 public class ventanaPrincipal extends JFrame {
 
+
+    final ImageIcon icon = new ImageIcon("C:\\Users\\NitroPC\\IdeaProjects\\ventanas_restaurante\\src\\main\\fotos\\foto_chino.png");
+    Image img = icon.getImage();
+
+
+
+
     public ventanaPrincipal(){
 
+
         JPanel panelExterno = new JPanel();
-        panelExterno.setBackground(Color.red);
+
         JPanel panelBotones = new JPanel(new BorderLayout());
-        panelBotones.setBackground(Color.blue);
+        JPanel panelBotones2 = new JPanel(new BorderLayout());
+
 //        JPanel panelIzq = new JPanel(new BorderLayout());
 //        JPanel panelDer = new JPanel(new BorderLayout());
 
@@ -18,17 +27,19 @@ public class ventanaPrincipal extends JFrame {
         JButton boton3 = new JButton("Admin");
         JButton boton4 = new JButton("Cliente");
 
-//        panelIzq.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-//        panelDer.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        panelBotones.setBorder(BorderFactory.createEmptyBorder(150, 5, 5, 5));
+        panelBotones2.setBorder(BorderFactory.createEmptyBorder(150, 5, 5, 5));
+        panelBotones.setOpaque(true);
+        panelBotones2.setOpaque(true);
 
 
-        panelExterno.add(panelBotones,BorderLayout.CENTER);
+        panelExterno.add(panelBotones,BorderLayout.PAGE_START);
+        panelExterno.add(panelBotones2,BorderLayout.PAGE_END);
 
-
-        panelBotones.add(boton1,BorderLayout.WEST);
-        panelBotones.add(boton2,BorderLayout.EAST);
-        panelBotones.add(boton3,BorderLayout.EAST);
-        panelBotones.add(boton4,BorderLayout.WEST);
+        panelBotones.add(boton1,BorderLayout.NORTH);
+        panelBotones.add(boton2,BorderLayout.SOUTH);
+        panelBotones2.add(boton3,BorderLayout.NORTH);
+        panelBotones2.add(boton4,BorderLayout.SOUTH);
 
 //        panelIzq.add(boton1,BorderLayout.NORTH);
 //        panelIzq.add(boton2,BorderLayout.SOUTH);
@@ -37,13 +48,19 @@ public class ventanaPrincipal extends JFrame {
 //        panelDer.add(boton4,BorderLayout.SOUTH);
 
 
+        super.paintComponents(getGraphics());
+
+
         setContentPane(panelExterno);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600,400);
         setVisible(true);
+    }
 
 
-
+    public void paintComponent(Graphics g){
+        g.drawImage(img, 0, 0, this);
+        super.paintComponents(g);
     }
 
 
